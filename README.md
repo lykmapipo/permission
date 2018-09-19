@@ -36,7 +36,8 @@ app.start((error, env) => {
 });
 ```
 
-## [Demo](https://permision.herokuapp.com/v1/permissions)
+## Demo
+[View Demo](https://permision.herokuapp.com/v1/permissions)
 
 ## Testing
 
