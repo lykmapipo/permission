@@ -35,6 +35,7 @@
   "homepage": "https://github.com/lykmapipo/permission",
   "sandbox": {
     "url": "https://permission.herokuapp.com",
+    "schema": "https://permission.herokuapp.com/v1/permissions/schema",
     "client_id": "",
     "client_secret": "",
     "urls": [

@@ -58,12 +58,6 @@ const Permission = require(path.join(__dirname, 'lib', 'permission.model'));
 exports.Permission = Permission;
 
 
-/* export schema definition */
-exports.definitions = {
-  Permission: Permission.jsonSchema()
-};
-
-
 /* import routers*/
 const permissionRouter =
   require(path.join(__dirname, 'lib', 'permission.http.router'));
