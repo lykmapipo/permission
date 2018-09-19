@@ -36,8 +36,7 @@ function boot() {
     },
 
     function seedPermission(next) {
-      const permissions = Permission.fake(32);
-      Permission.create(permissions, next);
+      Permission.seed(next);
     }
 
   ], function (error, results) {
