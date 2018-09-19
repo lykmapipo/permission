@@ -1,0 +1,85 @@
+{
+  "name": "@lykmapipo/permission",
+  "version": "0.1.0",
+  "description": "An entity that defines permits(access rights) that are assignable to role(s) to control what role(s) can see and do.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test",
+    "integration": "grunt integration",
+    "dev": "BASE_PATH=./examples node ./examples/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lykmapipo/permission.git"
+  },
+  "keywords": [
+    "lykmapipo",
+    "mongoose",
+    "permission",
+    "permit",
+    "access",
+    "role"
+  ],
+  "contributors": [
+    {
+      "name": "lykmapipo",
+      "email": "lallyelias87@gmail.com",
+      "url": "https://github.com/lykmapipo"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lykmapipo/permission/issues",
+    "email": "lallyelias87@gmail.com"
+  },
+  "homepage": "https://github.com/lykmapipo/permission",
+  "sandbox": {
+    "url": "https://permission.herokuapp.com",
+    "client_id": "",
+    "client_secret": "",
+    "urls": [
+      {
+        "resource": "Permission",
+        "link": "https://permission.herokuapp.com/v1/permissions",
+        "scopes": [
+          "permission:*"
+        ],
+        "methods": [
+          "get",
+          "put",
+          "patch"
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@benmaruchu/faker": "^4.2.1",
+    "chai": "^4.1.2",
+    "grunt": "^1.0.3",
+    "grunt-apidoc": "^0.11.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-mocha-test": "^0.13.3",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.2.15",
+    "sinon": "^6.3.4",
+    "sinon-chai": "^3.2.0",
+    "sinon-mongoose": "^2.2.1",
+    "supertest": "^3.3.0"
+  },
+  "dependencies": {
+    "@codetanzania/majifix-common": "^0.9.1",
+    "@lykmapipo/express-common": "^0.9.1",
+    "async": "^2.6.1",
+    "express": "^4.16.3",
+    "inflection": "^1.12.0",
+    "lodash": "^4.17.11",
+    "mongoose-rest-actions": "^0.17.0",
+    "mongoose-schema-jsonschema": "^1.1.15"
+  },
+  "engines": {
+    "node": ">=8.11.1",
+    "npm": ">=5.6.0"
+  }
+}

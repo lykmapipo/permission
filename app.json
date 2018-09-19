@@ -1,0 +1,27 @@
+{
+  "name": "permission",
+  "description": "An entity that defines permits(access rights) that are assignable to role(s) to control what role(s) can see and do.",
+  "repository": "https://github.com/lykmapipo/permission.git",
+  "keywords": [
+    "lykmapipo",
+    "mongoose",
+    "permission",
+    "permit",
+    "access",
+    "role"
+  ],
+  "addons": [
+    "mongolab"
+  ],
+  "env":
+  {
+    "NPM_CONFIG_PRODUCTION":
+    {
+      "value": "false"
+    },
+    "YARN_PRODUCTION":
+    {
+      "value": "false"
+    }
+  }
+}
