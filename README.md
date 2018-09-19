@@ -1,6 +1,6 @@
 # permission
 
-[![Build Status](https://travis-ci.org/lykmapipo/permission.svg?branch=develop)](https://travis-ci.org/lykmapipo/permission)
+[![Build Status](https://travis-ci.org/lykmapipo/permission.svg?branch=master)](https://travis-ci.org/lykmapipo/permission)
 [![Dependencies Status](https://david-dm.org/lykmapipo/permission/status.svg?style=flat-square)](https://david-dm.org/lykmapipo/permission)
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/lykmapipo/permission/tree/develop)
 
