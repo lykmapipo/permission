@@ -10,7 +10,7 @@
  * @author lally elias <lallyelias87@gmail.com>
  * @licence MIT
  * @since  0.1.0
- * @version 0.1.0
+ * @version 0.2.0
  * @example
  *
  * const { app } = require('@lykmapipo/permission');
