@@ -20,11 +20,13 @@
     "access",
     "role"
   ],
-  "contributors": [{
-    "name": "lykmapipo",
-    "email": "lallyelias87@gmail.com",
-    "url": "https://github.com/lykmapipo"
-  }],
+  "contributors": [
+    {
+      "name": "lykmapipo",
+      "email": "lallyelias87@gmail.com",
+      "url": "https://github.com/lykmapipo"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lykmapipo/permission/issues",
@@ -37,18 +39,20 @@
     "apidoc": "https://lykmapipo.github.io/permission/",
     "client_id": "",
     "client_secret": "",
-    "urls": [{
-      "resource": "Permission",
-      "link": "https://permision.herokuapp.com/v1/permissions",
-      "scopes": [
-        "permission:*"
-      ],
-      "methods": [
-        "get",
-        "put",
-        "patch"
-      ]
-    }]
+    "urls": [
+      {
+        "resource": "Permission",
+        "link": "https://permision.herokuapp.com/v1/permissions",
+        "scopes": [
+          "permission:*"
+        ],
+        "methods": [
+          "get",
+          "put",
+          "patch"
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
