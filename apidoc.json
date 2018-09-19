@@ -1,6 +1,7 @@
 {
   "name": "permission",
   "title": "Permission",
+  "version": "1.0.0",
   "url": "https://permission.herokuapp.com/v1",
   "sampleUrl": "https://permission.herokuapp.com/v1",
   "template":
