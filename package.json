@@ -34,15 +34,15 @@
   },
   "homepage": "https://github.com/lykmapipo/permission",
   "sandbox": {
-    "url": "https://permission.herokuapp.com",
-    "schema": "https://permission.herokuapp.com/v1/permissions/schema",
+    "url": "https://permision.herokuapp.com",
+    "schema": "https://permision.herokuapp.com/v1/permissions/schema",
     "apidoc": "https://lykmapipo.github.io/permission/",
     "client_id": "",
     "client_secret": "",
     "urls": [
       {
         "resource": "Permission",
-        "link": "https://permission.herokuapp.com/v1/permissions",
+        "link": "https://permision.herokuapp.com/v1/permissions",
         "scopes": [
           "permission:*"
         ],
