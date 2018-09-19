@@ -6,6 +6,8 @@
 
 An entity that defines permits(access rights) that are assignable to role(s) to control what role(s) can see and do.
 
+[Demo](https://permision.herokuapp.com/v1/permissions)
+
 ## Requirements
 
 - [nodejs v8.11.1+](https://nodejs.org)
