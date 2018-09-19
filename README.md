@@ -38,6 +38,7 @@ app.start((error, env) => {
 
 ## Demo
 [View Demo](https://permision.herokuapp.com/v1/permissions)
+[View apidoc](https://lykmapipo.github.io/permission/)
 
 ## Testing
 
