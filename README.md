@@ -4,7 +4,9 @@
 [![Dependencies Status](https://david-dm.org/lykmapipo/permission/status.svg?style=flat-square)](https://david-dm.org/lykmapipo/permission)
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/lykmapipo/permission/tree/master)
 
-An entity that defines permits(access rights) that are assignable to role(s) to control what role(s) can see and do.
+A representation of ability to perform an action or access a resource.
+
+Permissions are immutable and reflect an application's raw functionality (opening files, printing files, creating users, etc). This is what allows a system's security policy to be dynamic: because Permissions represent raw functionality and only change when the application's source code changes, they are immutable at runtime - they represent 'what' the system can do.
 
 [Demo](https://permision.herokuapp.com/v1/permissions)
 
@@ -67,9 +69,8 @@ npm test
 It will be nice, if you open an issue first so that we can know what is going on, then, fork this repo and push in your ideas. Do not forget to add a bit of test(s) of what value you adding.
 
 ## References
-- [A Universal Person and Organization Data Model](http://tdan.com/a-universal-person-and-organization-data-model/5014)
-- [popolo project](https://www.popoloproject.com/)
-- [Open Civic Data](http://docs.opencivicdata.org/en/latest/index.html)
+- [Role Based Access Control](https://en.wikipedia.org/wiki/Role-based_access_control)
+- [Apache Shiro - Permission](https://shiro.apache.org/permissions.html)
 
 ## Licence
 

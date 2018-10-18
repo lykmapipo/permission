@@ -50,7 +50,7 @@ describe('Permission HTTP Spec', () => {
       });
   });
 
-  it('should handle HTTP GET on /permissions/id:', (done) => {
+  it('should handle HTTP GET on /permissions/:id', (done) => {
     request(app)
       .get(
         `/v${permissionRouter.apiVersion}/permissions/${permission._id}`
@@ -73,7 +73,7 @@ describe('Permission HTTP Spec', () => {
       });
   });
 
-  it('should handle HTTP PATCH on /permissions/id:', (done) => {
+  it('should handle HTTP PATCH on /permissions/:id', (done) => {
     const patch = permission.fakeOnly('description');
     request(app)
       .patch(
@@ -99,7 +99,7 @@ describe('Permission HTTP Spec', () => {
       });
   });
 
-  it('should handle HTTP PUT on /permissions/id:', (done) => {
+  it('should handle HTTP PUT on /permissions/:id', (done) => {
     const put = permission.fakeOnly('description');
     request(app)
       .put(

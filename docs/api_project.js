@@ -1,10 +1,10 @@
 define({
   "name": "permission",
   "version": "1.0.0",
-  "description": "An entity that defines permits(access rights) that are assignable to role(s) to control what role(s) can see and do.",
+  "description": "A representation of ability to perform an action or access a resource.",
   "title": "Permission",
-  "url": "https://permission.herokuapp.com/v1",
-  "sampleUrl": "https://permission.herokuapp.com/v1",
+  "url": "https://permision.herokuapp.com/v1",
+  "sampleUrl": "https://permision.herokuapp.com/v1",
   "template": {
     "withCompare": true,
     "withGenerator": true
@@ -13,7 +13,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-09-19T10:14:01.933Z",
+    "time": "2018-10-18T09:07:46.767Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }

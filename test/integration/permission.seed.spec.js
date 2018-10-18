@@ -35,6 +35,17 @@ describe('Permission Seed', () => {
   });
 
   it('should seed provided', (done) => {
+    const seed = 'Post';
+    Permission.seed(seed, (error, seeded) => {
+      expect(error).to.not.exist;
+      expect(seeded).to.exist;
+      expect(seeded).to.length.at.least(1);
+      expect(_.find(seeded, { resource: seed })).to.exist;
+      done(error, seeded);
+    });
+  });
+
+  it('should seed provided', (done) => {
     const seed = { resource: 'Permission', action: 'purge' };
     Permission.seed(seed, (error, seeded) => {
       expect(error).to.not.exist;
@@ -52,6 +63,19 @@ describe('Permission Seed', () => {
       expect(seeded).to.exist;
       expect(seeded).to.length.at.least(1);
       expect(_.find(seeded, seed)).to.exist;
+      done(error, seeded);
+    });
+  });
+
+  it('should seed provided', (done) => {
+    const seed = 'Post';
+    const _seed = { resource: 'Permission', action: 'purge' };
+    Permission.seed([seed, _seed], (error, seeded) => {
+      expect(error).to.not.exist;
+      expect(seeded).to.exist;
+      expect(seeded).to.length.at.least(1);
+      expect(_.find(seeded, { resource: seed })).to.exist;
+      expect(_.find(seeded, _seed)).to.exist;
       done(error, seeded);
     });
   });

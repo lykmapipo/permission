@@ -3,6 +3,8 @@
 
 /* dependencies */
 const mongoose = require('mongoose');
+const MONGODB_URI = 'mongodb://localhost/permission';
+const CONNECTION_OPTION = { useNewUrlParser: true };
 
 
 /* wipe test database instance */
@@ -17,8 +19,7 @@ function wipe(done) {
 
 /* setup test database instance */
 before(function (done) {
-  mongoose.connect('mongodb://localhost/permission', { useNewUrlParser: true },
-    done);
+  mongoose.connect(MONGODB_URI, CONNECTION_OPTION, done);
 });
 
 

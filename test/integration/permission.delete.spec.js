@@ -24,7 +24,7 @@ describe('Permission Delete', () => {
     });
 
     it('should be able to delete', (done) => {
-      Permission.del(permission._id, function (error, deleted) {
+      Permission.del(permission._id, (error, deleted) => {
         expect(error).to.not.exist;
         expect(deleted).to.exist;
         expect(deleted._id).to.eql(permission._id);
@@ -33,14 +33,13 @@ describe('Permission Delete', () => {
     });
 
     it('should throw if not exists', (done) => {
-      Permission
-        .del(permission._id, function (error, deleted) {
-          expect(error).to.exist;
-          expect(error.status).to.exist;
-          expect(error.message).to.be.equal('Not Found');
-          expect(deleted).to.not.exist;
-          done();
-        });
+      Permission.del(permission._id, (error, deleted) => {
+        expect(error).to.exist;
+        expect(error.status).to.exist;
+        expect(error.message).to.be.equal('Not Found');
+        expect(deleted).to.not.exist;
+        done();
+      });
     });
 
   });
@@ -57,7 +56,7 @@ describe('Permission Delete', () => {
     });
 
     it('should be able to delete', (done) => {
-      permission.del(function (error, deleted) {
+      permission.del((error, deleted) => {
         expect(error).to.not.exist;
         expect(deleted).to.exist;
         expect(deleted._id).to.eql(permission._id);
@@ -66,7 +65,7 @@ describe('Permission Delete', () => {
     });
 
     it('should throw if not exists', (done) => {
-      permission.del(function (error, deleted) {
+      permission.del((error, deleted) => {
         expect(error).to.not.exist;
         expect(deleted).to.exist;
         expect(deleted._id).to.eql(permission._id);

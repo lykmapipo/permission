@@ -58,7 +58,7 @@ const Permission = require(path.join(__dirname, 'lib', 'permission.model'));
 exports.Permission = Permission;
 
 
-/* import routers*/
+/* import routers */
 const permissionRouter =
   require(path.join(__dirname, 'lib', 'permission.http.router'));
 

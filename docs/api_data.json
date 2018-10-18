@@ -11,7 +11,7 @@
     "groupTitle": "",
     "sampleRequest": [
       {
-        "url": "https://permission.herokuapp.com/v1/permissions/:id"
+        "url": "https://permision.herokuapp.com/v1/permissions/:id"
       }
     ],
     "header": {
@@ -149,7 +149,7 @@
     "groupTitle": "",
     "sampleRequest": [
       {
-        "url": "https://permission.herokuapp.com/v1/permissions/schema"
+        "url": "https://permision.herokuapp.com/v1/permissions/schema"
       }
     ],
     "header": {
@@ -194,7 +194,7 @@
     "groupTitle": "",
     "sampleRequest": [
       {
-        "url": "https://permission.herokuapp.com/v1/permissions"
+        "url": "https://permision.herokuapp.com/v1/permissions"
       }
     ],
     "header": {
@@ -394,7 +394,7 @@
     "groupTitle": "",
     "sampleRequest": [
       {
-        "url": "https://permission.herokuapp.com/v1/permissions/:id"
+        "url": "https://permision.herokuapp.com/v1/permissions/:id"
       }
     ],
     "header": {
@@ -538,7 +538,7 @@
     "groupTitle": "",
     "sampleRequest": [
       {
-        "url": "https://permission.herokuapp.com/v1/permissions/:id"
+        "url": "https://permision.herokuapp.com/v1/permissions/:id"
       }
     ],
     "header": {
