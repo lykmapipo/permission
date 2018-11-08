@@ -4,9 +4,9 @@
 /* dependencies */
 const path = require('path');
 const _ = require('lodash');
-const async = require('async');
 const { expect } = require('chai');
 const { Permission } = require(path.join(__dirname, '..', '..'));
+
 
 describe('Permission Get', () => {
 
@@ -14,20 +14,13 @@ describe('Permission Get', () => {
     Permission.deleteMany(done);
   });
 
-  let permissions = Permission.fake(10);
+  let permissions = Permission.fake(32);
 
   before((done) => {
-    permissions = _.map(permissions, (permission) => {
-      return (next) => {
-        permission.post(next);
-      };
-    });
-
-    async.parallel(permissions, (error, created) => {
+    Permission.insertMany(permissions, (error, created) => {
       permissions = created;
       done(error, created);
     });
-
   });
 
   it('should be able to get without options', (done) => {
@@ -37,7 +30,7 @@ describe('Permission Get', () => {
       expect(results.data).to.exist;
       expect(results.data).to.have.length(10);
       expect(results.total).to.exist;
-      expect(results.total).to.be.equal(10);
+      expect(results.total).to.be.equal(32);
       expect(results.limit).to.exist;
       expect(results.limit).to.be.equal(10);
       expect(results.skip).to.exist;
@@ -45,8 +38,10 @@ describe('Permission Get', () => {
       expect(results.page).to.exist;
       expect(results.page).to.be.equal(1);
       expect(results.pages).to.exist;
-      expect(results.pages).to.be.equal(1);
+      expect(results.pages).to.be.equal(4);
       expect(results.lastModified).to.exist;
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
+        .to.be.at.most(results.lastModified);
       done(error, results);
     });
   });
@@ -57,9 +52,9 @@ describe('Permission Get', () => {
       expect(error).to.not.exist;
       expect(results).to.exist;
       expect(results.data).to.exist;
-      expect(results.data).to.have.length(10);
+      expect(results.data).to.have.length(20);
       expect(results.total).to.exist;
-      expect(results.total).to.be.equal(10);
+      expect(results.total).to.be.equal(32);
       expect(results.limit).to.exist;
       expect(results.limit).to.be.equal(20);
       expect(results.skip).to.exist;
@@ -67,12 +62,13 @@ describe('Permission Get', () => {
       expect(results.page).to.exist;
       expect(results.page).to.be.equal(1);
       expect(results.pages).to.exist;
-      expect(results.pages).to.be.equal(1);
+      expect(results.pages).to.be.equal(2);
       expect(results.lastModified).to.exist;
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
+        .to.be.at.most(results.lastModified);
       done(error, results);
     });
   });
-
 
   it('should be able to search with options', (done) => {
     const options = { filter: { q: permissions[0].wildcard } };
@@ -92,10 +88,11 @@ describe('Permission Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(1);
       expect(results.lastModified).to.exist;
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
+        .to.be.at.most(results.lastModified);
       done(error, results);
     });
   });
-
 
   it('should parse filter options', (done) => {
     const options = { filter: { wildcard: permissions[0].wildcard } };
@@ -115,9 +112,10 @@ describe('Permission Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(1);
       expect(results.lastModified).to.exist;
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
+        .to.be.at.most(results.lastModified);
       done(error, results);
     });
-
   });
 
   after((done) => {

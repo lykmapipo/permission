@@ -1,0 +1,7 @@
+[
+{
+  "resource": "Order",
+  "action": "view",
+  "description": "View order",
+  "wildcard": "order:view"
+}]

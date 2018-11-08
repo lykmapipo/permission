@@ -64,7 +64,11 @@ const permissionRouter =
 
 
 /* export party router */
-exports.router = exports.permissionRouter = permissionRouter;
+exports.permissionRouter = permissionRouter;
+
+
+/* export router api version */
+exports.apiVersion = permissionRouter.apiVersion;
 
 
 /* export app */

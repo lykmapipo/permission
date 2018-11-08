@@ -7,19 +7,21 @@ const request = require('supertest');
 const { expect } = require('chai');
 const {
   Permission,
-  permissionRouter,
+  apiVersion,
   app
 } = require(path.join(__dirname, '..', '..'));
 
-describe('Permission HTTP Spec', () => {
+
+describe('Permission Rest API', function () {
+
+  let permission;
 
   before((done) => {
     Permission.deleteMany(done);
   });
 
-  let permission = Permission.fake();
-
   before((done) => {
+    permission = Permission.fake();
     permission.post((error, created) => {
       permission = created;
       done(error, created);
@@ -28,7 +30,7 @@ describe('Permission HTTP Spec', () => {
 
   it('should handle HTTP GET on /permissions', (done) => {
     request(app)
-      .get(`/v${permissionRouter.apiVersion}/permissions`)
+      .get(`/v${apiVersion}/permissions`)
       .set('Accept', 'application/json')
       .expect(200)
       .expect('Content-Type', /json/)
@@ -45,85 +47,77 @@ describe('Permission HTTP Spec', () => {
         expect(result.page).to.exist;
         expect(result.pages).to.exist;
         expect(result.lastModified).to.exist;
-
         done(error, response);
       });
   });
 
-  it('should handle HTTP GET on /permissions/:id', (done) => {
+  it('should handle HTTP GET on /permissions/id:', (done) => {
     request(app)
-      .get(
-        `/v${permissionRouter.apiVersion}/permissions/${permission._id}`
-      )
+      .get(`/v${apiVersion}/permissions/${permission._id}`)
       .set('Accept', 'application/json')
       .expect(200)
       .end((error, response) => {
         expect(error).to.not.exist;
         expect(response).to.exist;
 
-        const found = response.body;
+        const found = new Permission(response.body);
+
         expect(found._id).to.exist;
-        expect(found._id).to.be.eql(permission._id.toString());
-        expect(found.resource).to.be.eql(permission.resource);
-        expect(found.action).to.be.eql(permission.action);
-        expect(found.description).to.be.eql(permission.description);
-        expect(found.wildcard).to.be.eql(permission.wildcard);
+        expect(found._id).to.be.eql(permission._id);
+        expect(found.wildcard).to.be.equal(permission.wildcard);
 
         done(error, response);
       });
   });
 
-  it('should handle HTTP PATCH on /permissions/:id', (done) => {
-    const patch = permission.fakeOnly('description');
+  it('should handle HTTP PATCH on /permissions/id:', (done) => {
+    const { name } = permission.fakeOnly('name');
     request(app)
-      .patch(
-        `/v${permissionRouter.apiVersion}/permissions/${permission._id}`
-      )
+      .patch(`/v${apiVersion}/permissions/${permission._id}`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
-      .send(patch)
+      .send({ name })
       .expect(200)
       .end((error, response) => {
         expect(error).to.not.exist;
         expect(response).to.exist;
 
-        const updated = response.body;
+        const patched = new Permission(response.body);
 
-        expect(updated._id).to.exist;
-        expect(updated._id).to.be.eql(permission._id.toString());
-        expect(updated.resource).to.be.eql(permission.resource);
-        expect(updated.action).to.be.eql(permission.action);
-        expect(updated.wildcard).to.be.eql(permission.wildcard);
+        expect(patched._id).to.exist;
+        expect(patched._id).to.be.eql(permission._id);
+        expect(patched.wildcard).to.be.equal(permission.wildcard);
+
+        //set
+        permission = patched;
 
         done(error, response);
       });
   });
 
-  it('should handle HTTP PUT on /permissions/:id', (done) => {
-    const put = permission.fakeOnly('description');
+  it('should handle HTTP PUT on /permissions/id:', (done) => {
+    const { name } = permission.fakeOnly('name');
     request(app)
-      .put(
-        `/v${permissionRouter.apiVersion}/permissions/${permission._id}`
-      )
+      .put(`/v${apiVersion}/permissions/${permission._id}`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
-      .send(put)
+      .send({ name })
       .expect(200)
       .end((error, response) => {
         expect(error).to.not.exist;
         expect(response).to.exist;
 
-        const updated = response.body;
+        const updated = new Permission(response.body);
 
         expect(updated._id).to.exist;
-        expect(updated._id).to.be.eql(permission._id.toString());
-        expect(updated.resource).to.be.eql(permission.resource);
-        expect(updated.action).to.be.eql(permission.action);
-        expect(updated.wildcard).to.be.eql(permission.wildcard);
+        expect(updated._id).to.be.eql(permission._id);
+        expect(updated.wildcard).to.be.equal(permission.wildcard);
+
+        //set
+        permission = updated;
+
         done(error, response);
-
       });
-
   });
 
   after((done) => {

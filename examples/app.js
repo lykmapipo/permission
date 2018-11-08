@@ -1,59 +1,39 @@
 'use strict';
 
 
-/* ensure mongodb uri */
+/* ensure mongo uri */
 process.env.MONGODB_URI =
   (process.env.MONGODB_URI || 'mongodb://localhost/permission');
 
 
 /* dependencies */
 const path = require('path');
-const _ = require('lodash');
-const async = require('async');
 const mongoose = require('mongoose');
-const { env } = require('@codetanzania/majifix-common');
-const { getStrings } = env;
 const {
   Permission,
-  permissionRouter,
+  apiVersion,
   info,
   app
 } = require(path.join(__dirname, '..'));
 
 
-/* establish mongodb connection */
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+/* connect to mongoose */
+mongoose.connect(process.env.MONGODB_URI);
 
 
-function boot() {
+Permission.seed(( /*error, results*/ ) => {
 
-  async.waterfall([
-
-    function clear(next) {
-      Permission.deleteMany(function ( /*error, results*/ ) {
-        next();
-      });
-    },
-
-    function seedPermission(next) {
-      Permission.seed(next);
-    }
-
-  ], function (error, results) {
-
-    /* expose module info */
-    app.get('/', function (request, response) {
-      response.status(200);
-      response.json(info);
-    });
-
-    /* fire the app */
-    app.start(function (error, env) {
-      console.log(`visit http://0.0.0.0:${env.PORT}`);
-    });
-
+  /* expose module info */
+  app.get('/', (request, response) => {
+    response.status(200);
+    response.json(info);
   });
 
-}
+  /* fire the app */
+  app.start((error, env) => {
+    console.log(
+      `visit http://0.0.0.0:${env.PORT}/v${apiVersion}/permissions`
+    );
+  });
 
-boot();
+});
