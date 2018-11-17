@@ -24,54 +24,72 @@ const path = require('path');
 const _ = require('lodash');
 const app = require('@lykmapipo/express-common');
 const mongoose = require('mongoose');
-require('mongoose-schema-jsonschema')(mongoose);
-
-
-/* declarations */
 const pkg = require(path.join(__dirname, 'package.json'));
-const fields = [
-  'name',
-  'description',
-  'version',
-  'license',
-  'homepage',
-  'repository',
-  'bugs',
-  'sandbox',
-  'contributors'
-];
-
-
-/* extract information from package.json */
-const info = _.merge({}, _.pick(pkg, fields));
-
-
-/* export package(module) info */
-exports.info = info;
-
-
-/* import models */
-const Permission = require(path.join(__dirname, 'lib', 'permission.model'));
-
-
-/* export models */
-exports.Permission = Permission;
-
-
-/* import routers */
+require('mongoose-schema-jsonschema')(mongoose);
 const permissionRouter =
   require(path.join(__dirname, 'lib', 'permission.http.router'));
 
 
-/* export party router */
+/**
+ * @name info
+ * @description package information
+ * @type {Object}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.info = _.merge({}, _.pick(pkg, [
+  'name', 'description', 'version', 'license',
+  'homepage', 'repository', 'bugs', 'sandbox', 'contributors'
+]));
+
+
+/**
+ * @name Permission
+ * @description Permission model
+ * @type {mongoose.Model}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.Permission = require(path.join(__dirname, 'lib', 'permission.model'));
+
+
+/**
+ * @name permissionRouter
+ * @description permission http router
+ * @type {express.Router}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 exports.permissionRouter = permissionRouter;
 
 
-/* export router api version */
+/**
+ * @name apiVersion
+ * @description http router api version
+ * @type {String}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 exports.apiVersion = permissionRouter.apiVersion;
 
 
-/* export app */
+/**
+ * @name app
+ * @description express app
+ * @type {Object}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 Object.defineProperty(exports, 'app', {
   get() {
     /* @todo bind oauth middlewares authenticate, token, authorize */
