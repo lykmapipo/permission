@@ -2,10 +2,9 @@
 
 
 /* dependencies */
-const path = require('path');
 const { expect } = require('chai');
-const Permission =
-  require(path.join(__dirname, '..', '..', 'lib', 'permission.model'));
+const { include } = require('@lykmapipo/include');
+const Permission = include(__dirname, '..', '..', 'lib', 'permission.model');
 
 
 describe('Permission Instance', () => {
@@ -88,23 +87,31 @@ describe('Permission Validations', () => {
 
 describe('Permission Statics', () => {
 
-  it('should expose model name as constant', () => {
+  it('should expose model name', () => {
     expect(Permission.MODEL_NAME).to.exist;
     expect(Permission.MODEL_NAME).to.be.equal('Permission');
   });
 
-  it('should expose collection name as constant', () => {
+  it('should expose collection name', () => {
     expect(Permission.COLLECTION_NAME).to.exist;
     expect(Permission.COLLECTION_NAME).to.be.equal('permissions');
   });
 
-  it('should expose default actions as constant', () => {
+  it('should expose default actions', () => {
     expect(Permission.DEFAULT_ACTIONS).to.exist;
     expect(Permission.DEFAULT_ACTIONS).to.be.eql([
       'Create', 'View', 'Edit',
       'Delete', 'Share', 'Print',
       'Import', 'Export', 'Download'
     ]);
+  });
+
+  it('should expose autopopulate options', () => {
+    expect(Permission.OPTION_AUTOPOPULATE).to.exist;
+    expect(Permission.OPTION_AUTOPOPULATE).to.be.eql({
+      select: { resource: 1, action: 1, wildcard: 1 },
+      maxDepth: 1
+    });
   });
 
 });

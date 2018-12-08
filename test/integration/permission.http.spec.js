@@ -2,14 +2,10 @@
 
 
 /* dependencies */
-const path = require('path');
-const request = require('supertest');
 const { expect } = require('chai');
-const {
-  Permission,
-  apiVersion,
-  app
-} = require(path.join(__dirname, '..', '..'));
+const { include } = require('@lykmapipo/include');
+const request = require('supertest');
+const { Permission, apiVersion, app } = include(__dirname, '..', '..');
 
 
 describe('Permission Rest API', function () {

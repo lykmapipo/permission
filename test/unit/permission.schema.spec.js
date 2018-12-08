@@ -2,11 +2,10 @@
 
 
 /* dependencies */
-const path = require('path');
 const { expect } = require('chai');
+const { include } = require('@lykmapipo/include');
 const { Schema } = require('mongoose');
-const Permission =
-  require(path.join(__dirname, '..', '..', 'lib', 'permission.model'));
+const Permission = include(__dirname, '..', '..', 'lib', 'permission.model');
 
 
 describe('Permission Schema', () => {

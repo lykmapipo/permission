@@ -20,14 +20,17 @@
 
 
 /* dependencies */
-const path = require('path');
 const _ = require('lodash');
+const { include } = require('@lykmapipo/include');
 const app = require('@lykmapipo/express-common');
 const mongoose = require('mongoose');
-const pkg = require(path.join(__dirname, 'package.json'));
 require('mongoose-schema-jsonschema')(mongoose);
-const permissionRouter =
-  require(path.join(__dirname, 'lib', 'permission.http.router'));
+
+
+/* includes */
+const pkg = include(__dirname, 'package.json');
+const Permission = include(__dirname, 'lib', 'permission.model');
+const permissionRouter = include(__dirname, 'lib', 'permission.http.router');
 
 
 /**
@@ -54,7 +57,7 @@ exports.info = _.merge({}, _.pick(pkg, [
  * @since 0.1.0
  * @version 0.1.0
  */
-exports.Permission = require(path.join(__dirname, 'lib', 'permission.model'));
+exports.Permission = Permission;
 
 
 /**
