@@ -1,10 +1,5 @@
 'use strict';
 
-
-/* ensure test env */
-process.env.NODE_ENV = 'test';
-
-
 /* dependencies */
 const { connect, clear, drop } = require('@lykmapipo/mongoose-test-helpers');
 

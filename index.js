@@ -23,8 +23,6 @@
 const _ = require('lodash');
 const { include } = require('@lykmapipo/include');
 const app = require('@lykmapipo/express-common');
-const mongoose = require('mongoose');
-require('mongoose-schema-jsonschema')(mongoose);
 
 
 /* includes */

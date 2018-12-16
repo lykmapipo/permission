@@ -7,33 +7,28 @@ process.env.MONGODB_URI =
 
 
 /* dependencies */
-const path = require('path');
-const mongoose = require('mongoose');
-const {
-  Permission,
-  apiVersion,
-  info,
-  app
-} = require(path.join(__dirname, '..'));
+const { connect } = require('@lykmapipo/mongoose-common');
+const { include } = require('@lykmapipo/include');
+const { Permission, apiVersion, info, app } = include(__dirname, '..');
 
 
-/* connect to mongoose */
-mongoose.connect(process.env.MONGODB_URI);
+// establish mongodb connection
+connect((error) => {
 
+  // seed permissions
+  Permission.seed((error, results) => {
 
-Permission.seed(( /*error, results*/ ) => {
+    // expose module info
+    app.get('/', (request, response) => {
+      response.status(200);
+      response.json(info);
+    });
 
-  /* expose module info */
-  app.get('/', (request, response) => {
-    response.status(200);
-    response.json(info);
-  });
+    // fire the app
+    app.start((error, env) => {
+      console.log(`visit http://0.0.0.0:${env.PORT}`);
+    });
 
-  /* fire the app */
-  app.start((error, env) => {
-    console.log(
-      `visit http://0.0.0.0:${env.PORT}/v${apiVersion}/permissions`
-    );
   });
 
 });
