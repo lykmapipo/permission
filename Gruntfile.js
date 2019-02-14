@@ -41,6 +41,16 @@ module.exports = function (grunt) {
           'test/integration/**/*.js',
           '!test/unit/**/*.js'
         ]
+      },
+      http: {
+        options: {
+          reporter: 'spec',
+          timeout: 20000
+        },
+        src: [
+          'test/integration/bootstrap.spec.js',
+          'test/integration/**/*.http.spec.js'
+        ]
       }
     },
     jshint: {
@@ -81,6 +91,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['jshint', 'mochaTest', 'watch']);
   grunt.registerTask('test', ['jshint', 'mochaTest']);
   grunt.registerTask('integration', ['jshint', 'mochaTest:integration']);
+  grunt.registerTask('http', ['jshint', 'mochaTest:http']);
   grunt.registerTask('unit', ['jshint', 'mochaTest:unit']);
   grunt.registerTask('doc', ['jshint', 'apidoc:api']);
 

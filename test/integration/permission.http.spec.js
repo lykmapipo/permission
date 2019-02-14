@@ -116,6 +116,17 @@ describe('Permission Rest API', function () {
       });
   });
 
+  it('should handle HTTP DELETE on /permissions/id:', (done) => {
+    request(app)
+      .delete(`/${apiVersion}/permissions/${permission._id}`)
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .expect(405)
+      .end((error, response) => {
+        done(null, response);
+      });
+  });
+
   after((done) => {
     Permission.deleteMany(done);
   });
