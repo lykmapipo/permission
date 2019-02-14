@@ -26,7 +26,7 @@ describe('Permission Rest API', function () {
 
   it('should handle HTTP GET on /permissions', (done) => {
     request(app)
-      .get(`/v${apiVersion}/permissions`)
+      .get(`/${apiVersion}/permissions`)
       .set('Accept', 'application/json')
       .expect(200)
       .expect('Content-Type', /json/)
@@ -49,7 +49,7 @@ describe('Permission Rest API', function () {
 
   it('should handle HTTP GET on /permissions/id:', (done) => {
     request(app)
-      .get(`/v${apiVersion}/permissions/${permission._id}`)
+      .get(`/${apiVersion}/permissions/${permission._id}`)
       .set('Accept', 'application/json')
       .expect(200)
       .end((error, response) => {
@@ -69,7 +69,7 @@ describe('Permission Rest API', function () {
   it('should handle HTTP PATCH on /permissions/id:', (done) => {
     const { name } = permission.fakeOnly('name');
     request(app)
-      .patch(`/v${apiVersion}/permissions/${permission._id}`)
+      .patch(`/${apiVersion}/permissions/${permission._id}`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
       .send({ name })
@@ -94,7 +94,7 @@ describe('Permission Rest API', function () {
   it('should handle HTTP PUT on /permissions/id:', (done) => {
     const { name } = permission.fakeOnly('name');
     request(app)
-      .put(`/v${apiVersion}/permissions/${permission._id}`)
+      .put(`/${apiVersion}/permissions/${permission._id}`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
       .send({ name })

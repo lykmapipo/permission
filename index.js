@@ -20,13 +20,10 @@
 
 
 /* dependencies */
-const _ = require('lodash');
+const { pkg } = require('@lykmapipo/common');
 const { include } = require('@lykmapipo/include');
+const { apiVersion } = require('@lykmapipo/env');
 const app = require('@lykmapipo/express-common');
-
-
-/* includes */
-const pkg = include(__dirname, 'package.json');
 const Permission = include(__dirname, 'lib', 'permission.model');
 const permissionRouter = include(__dirname, 'lib', 'permission.http.router');
 
@@ -37,13 +34,13 @@ const permissionRouter = include(__dirname, 'lib', 'permission.http.router');
  * @type {Object}
  *
  * @author lally elias <lallyelias87@gmail.com>
- * @since 0.1.0
+ * @since 1.0.0
  * @version 0.1.0
  */
-exports.info = _.merge({}, _.pick(pkg, [
+exports.info = pkg(
   'name', 'description', 'version', 'license',
   'homepage', 'repository', 'bugs', 'sandbox', 'contributors'
-]));
+);
 
 
 /**
@@ -79,7 +76,7 @@ exports.permissionRouter = permissionRouter;
  * @since 0.1.0
  * @version 0.1.0
  */
-exports.apiVersion = permissionRouter.apiVersion;
+exports.apiVersion = apiVersion();
 
 
 /**
