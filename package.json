@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/permission",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "A representation of ability to perform an action or access a resource.",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "integration:test": "grunt integration",
     "http:test": "grunt http",
     "unit:test": "grunt unit",
+    "doc": "grunt doc",
     "dev": "npm run seed && npm run start",
     "start": "BASE_PATH=./examples node ./examples/app.js",
     "seed": "BASE_PATH=./examples node ./examples/seed.js"
@@ -30,11 +31,13 @@
     "capability",
     "functionality"
   ],
-  "contributors": [{
-    "name": "lykmapipo",
-    "email": "lallyelias87@gmail.com",
-    "url": "https://github.com/lykmapipo"
-  }],
+  "contributors": [
+    {
+      "name": "lykmapipo",
+      "email": "lallyelias87@gmail.com",
+      "url": "https://github.com/lykmapipo"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lykmapipo/permission/issues",
@@ -47,18 +50,20 @@
     "apidoc": "https://lykmapipo.github.io/permission/",
     "client_id": "",
     "client_secret": "",
-    "urls": [{
-      "resource": "Permission",
-      "link": "https://permision.herokuapp.com/v1/permissions",
-      "scopes": [
-        "permission:*"
-      ],
-      "methods": [
-        "get",
-        "put",
-        "patch"
-      ]
-    }]
+    "urls": [
+      {
+        "resource": "Permission",
+        "link": "https://permision.herokuapp.com/v1/permissions",
+        "scopes": [
+          "permission:*"
+        ],
+        "methods": [
+          "get",
+          "put",
+          "patch"
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
