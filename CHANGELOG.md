@@ -1,3 +1,9 @@
+#### 0.7.1 (2019-03-28)
+
+##### Chores
+
+*  force latest dependencies ([e591aad5](https://github.com/lykmapipo/permission/commit/e591aad57c5d5b9229e15d5d2db79bba688daae3))
+
 #### 0.7.0 (2019-02-14)
 
 ##### Refactors
