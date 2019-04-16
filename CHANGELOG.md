@@ -1,3 +1,13 @@
+#### 0.7.2 (2019-04-16)
+
+##### Chores
+
+*  force latest dependencies ([60cbcd1c](https://github.com/lykmapipo/permission/commit/60cbcd1ce12d386a605793945b1b6b126846d932))
+
+##### Documentation Changes
+
+*  add code of conduct & contributing guide ([90615919](https://github.com/lykmapipo/permission/commit/90615919754aefa39a62c66de8cbf19d116267d1))
+
 #### 0.7.1 (2019-03-28)
 
 ##### Chores
