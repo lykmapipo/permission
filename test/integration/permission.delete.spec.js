@@ -2,7 +2,7 @@
 
 
 /* dependencies */
-const { expect } = require('chai');
+const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { include } = require('@lykmapipo/include');
 const { Permission } = include(__dirname, '..', '..');
 
@@ -34,8 +34,8 @@ describe('Permission Static Delete', () => {
   it('should throw if not exists', (done) => {
     Permission.del(permission._id, (error, deleted) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(deleted).to.not.exist;
       done();
     });
