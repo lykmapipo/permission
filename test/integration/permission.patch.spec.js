@@ -2,6 +2,7 @@
 
 
 /* dependencies */
+const _ = require('lodash');
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { include } = require('@lykmapipo/include');
 const { Permission } = include(__dirname, '..', '..');
@@ -33,9 +34,9 @@ describe('Permission Static Patch', () => {
     });
   });
 
-  it.skip('should throw if not exists', (done) => {
-    const fake = Permission.fake();
-    Permission.patch(fake._id, fake, (error, updated) => {
+  it('should throw if not exists', (done) => {
+    const fake = Permission.fake().toObject();
+    Permission.patch(fake._id, _.omit(fake, '_id'), (error, updated) => {
       expect(error).to.exist;
       // expect(error.status).to.exist;
       expect(error.name).to.be.equal('DocumentNotFoundError');
