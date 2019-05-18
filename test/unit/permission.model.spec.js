@@ -132,4 +132,10 @@ describe('Permission Statics', () => {
     expect(withProps.action).to.exist;
   });
 
+  it('should prepare resources permissions', () => {
+    const permissions = Permission.prepareResourcesPermissions();
+    expect(permissions).to.exist;
+    expect(permissions).to.have.length.at.least(1);
+  });
+
 });
