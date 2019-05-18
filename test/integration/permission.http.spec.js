@@ -81,8 +81,9 @@ describe('Permission Rest API', function () {
 
   it('should handle HTTP PATCH on /permissions/id:', done => {
     const { testPatch } = testRouter('permissions', permissionRouter);
-    const { name } = permission.fakeOnly('name');
-    testPatch(permission._id.toString(), { name })
+    const { description } = permission.fakeOnly('description');
+    console.log(description);
+    testPatch(permission._id.toString(), { description })
       .expect(200)
       .expect('Content-Type', /json/)
       .end((error, response) => {
@@ -104,8 +105,8 @@ describe('Permission Rest API', function () {
 
   it('should handle HTTP PUT on /permissions/id:', done => {
     const { testPut } = testRouter('permissions', permissionRouter);
-    const { name } = permission.fakeOnly('name');
-    testPut(permission._id.toString(), { name })
+    const { description } = permission.fakeOnly('description');
+    testPut(permission._id.toString(), { description })
       .expect(200)
       .expect('Content-Type', /json/)
       .end((error, response) => {
