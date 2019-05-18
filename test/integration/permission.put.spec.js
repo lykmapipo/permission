@@ -2,7 +2,8 @@
 
 
 /* dependencies */
-const { expect } = require('chai');
+const _ = require('lodash');
+const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { include } = require('@lykmapipo/include');
 const { Permission } = include(__dirname, '..', '..');
 
@@ -34,11 +35,11 @@ describe('Permission Static Put', () => {
   });
 
   it('should throw if not exists', (done) => {
-    const fake = Permission.fake();
-    Permission.put(fake._id, fake, (error, updated) => {
+    const fake = Permission.fake().toObject();
+    Permission.put(fake._id, _.omit(fake, '_id'), (error, updated) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(updated).to.not.exist;
       done();
     });
