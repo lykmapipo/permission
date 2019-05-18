@@ -2,6 +2,7 @@
 
 
 /* dependencies */
+const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const Permission = include(__dirname, '..', '..', 'lib', 'permission.model');
@@ -112,6 +113,23 @@ describe('Permission Statics', () => {
       select: { resource: 1, action: 1, wildcard: 1 },
       maxDepth: 1
     });
+  });
+
+  it('should prepare seeding criteria', () => {
+    const seed = Permission.fake().toObject();
+
+    const withId = Permission.prepareSeedCriteria(seed);
+    expect(withId).to.exist;
+    expect(withId._id).to.exist;
+    expect(withId.resource).to.not.exist;
+    expect(withId.action).to.not.exist;
+    expect(withId.wildcard).to.not.exist;
+
+    const withProps = Permission.prepareSeedCriteria(_.omit(seed, '_id'));
+    expect(withProps).to.exist;
+    expect(withProps._id).to.not.exist;
+    expect(withProps.resource).to.exist;
+    expect(withProps.action).to.exist;
   });
 
 });
