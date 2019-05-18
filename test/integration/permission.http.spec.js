@@ -2,21 +2,26 @@
 
 
 /* dependencies */
-const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
-const request = require('supertest');
-const { Permission, apiVersion, app } = include(__dirname, '..', '..');
+const {
+  clear: clearHttp,
+  expect,
+  testRouter,
+} = require('@lykmapipo/express-test-helpers');
+const { permissionRouter, Permission } = include(__dirname, '..', '..');
 
 
 describe('Permission Rest API', function () {
 
   let permission;
 
-  before((done) => {
+  before(() => clearHttp());
+
+  before(done => {
     Permission.deleteMany(done);
   });
 
-  before((done) => {
+  before(done => {
     permission = Permission.fake();
     permission.post((error, created) => {
       permission = created;
@@ -24,10 +29,18 @@ describe('Permission Rest API', function () {
     });
   });
 
-  it('should handle HTTP GET on /permissions', (done) => {
-    request(app)
-      .get(`/${apiVersion}/permissions`)
-      .set('Accept', 'application/json')
+  it('should handle HTTP POST on /permissions', done => {
+    const { testPost } = testRouter('permissions', permissionRouter);
+    testPost(permission.toObject())
+      .expect(404)
+      .end((error, response) => {
+        done(null, response);
+      });
+  });
+
+  it('should handle HTTP GET on /permissions', done => {
+    const { testGet } = testRouter('permissions', permissionRouter);
+    testGet()
       .expect(200)
       .expect('Content-Type', /json/)
       .end((error, response) => {
@@ -47,11 +60,11 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP GET on /permissions/id:', (done) => {
-    request(app)
-      .get(`/${apiVersion}/permissions/${permission._id}`)
-      .set('Accept', 'application/json')
+  it('should handle HTTP GET on /permissions/id:', done => {
+    const { testGet } = testRouter('permissions', permissionRouter);
+    testGet(permission._id.toString())
       .expect(200)
+      .expect('Content-Type', /json/)
       .end((error, response) => {
         expect(error).to.not.exist;
         expect(response).to.exist;
@@ -66,14 +79,12 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP PATCH on /permissions/id:', (done) => {
+  it('should handle HTTP PATCH on /permissions/id:', done => {
+    const { testPatch } = testRouter('permissions', permissionRouter);
     const { name } = permission.fakeOnly('name');
-    request(app)
-      .patch(`/${apiVersion}/permissions/${permission._id}`)
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .send({ name })
+    testPatch(permission._id.toString(), { name })
       .expect(200)
+      .expect('Content-Type', /json/)
       .end((error, response) => {
         expect(error).to.not.exist;
         expect(response).to.exist;
@@ -91,14 +102,12 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP PUT on /permissions/id:', (done) => {
+  it('should handle HTTP PUT on /permissions/id:', done => {
+    const { testPut } = testRouter('permissions', permissionRouter);
     const { name } = permission.fakeOnly('name');
-    request(app)
-      .put(`/${apiVersion}/permissions/${permission._id}`)
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .send({ name })
+    testPut(permission._id.toString(), { name })
       .expect(200)
+      .expect('Content-Type', /json/)
       .end((error, response) => {
         expect(error).to.not.exist;
         expect(response).to.exist;
@@ -116,18 +125,16 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP DELETE on /permissions/id:', (done) => {
-    request(app)
-      .delete(`/${apiVersion}/permissions/${permission._id}`)
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
+  it('should handle HTTP DELETE on /permissions/id:', done => {
+    const { testDelete } = testRouter('permissions', permissionRouter);
+    testDelete(permission._id.toString())
       .expect(405)
       .end((error, response) => {
         done(null, response);
       });
   });
 
-  after((done) => {
+  after(done => {
     Permission.deleteMany(done);
   });
 

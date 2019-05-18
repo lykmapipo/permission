@@ -23,7 +23,6 @@
 const { pkg } = require('@lykmapipo/common');
 const { include } = require('@lykmapipo/include');
 const { apiVersion } = require('@lykmapipo/env');
-const { app, mount } = require('@lykmapipo/express-common');
 const Permission = include(__dirname, 'lib', 'permission.model');
 const permissionRouter = include(__dirname, 'lib', 'permission.http.router');
 
@@ -78,21 +77,3 @@ exports.permissionRouter = permissionRouter;
  * @version 0.1.0
  */
 exports.apiVersion = apiVersion();
-
-
-/**
- * @name app
- * @description express app
- * @type {Object}
- *
- * @author lally elias <lallyelias87@gmail.com>
- * @since 0.1.0
- * @version 0.1.0
- */
-Object.defineProperty(exports, 'app', {
-  get() {
-    /* @todo bind oauth middlewares authenticate, token, authorize */
-    mount(permissionRouter);
-    return app;
-  }
-});
