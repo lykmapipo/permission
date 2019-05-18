@@ -4,7 +4,8 @@
 /* dependencies */
 const { connect } = require('@lykmapipo/mongoose-common');
 const { include } = require('@lykmapipo/include');
-const { Permission, info, app } = include(__dirname, '..');
+const { get, mount, start } = require('@lykmapipo/express-common');
+const { Permission, info, permissionRouter } = include(__dirname, '..');
 
 
 // establish mongodb connection
@@ -13,13 +14,16 @@ connect(error => {
   if (error) { throw error; }
 
   // expose module info
-  app.get('/', (request, response) => {
+  get('/', (request, response) => {
     response.status(200);
     response.json(info);
   });
 
+  // mount permission router
+  mount(permissionRouter);
+
   // fire the app
-  app.start((error, env) => {
+  start((error, env) => {
     // re-throw if error
     if (error) { throw error; }
 
