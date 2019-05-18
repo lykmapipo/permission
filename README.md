@@ -26,16 +26,18 @@ npm install @lykmapipo/permission --save
 ## Usage
 
 ```js
-const mongoose = require('mongoose');
-const { app } = require('@lykmapipo/permission');
+const { connect } = require('@lykmapipo/mongoose-common');
+const { start, mount } = require('@lykmapipo/express-common');
+const { Permission, permissionRouter } = require('@lykmapipo/permission');
 
-//connect to mongodb
-mongoose.connect(process.env.MONGODB_URI);
+// connect to mongodb
+connect(process.env.MONGODB_URI, error => { ... });
 
-//fire the app
-app.start((error, env) => {
-  ...
-});
+// mount permission http router
+mount(permissionRouter);
+
+// fire the http server
+start(error => { ... });
 ```
 
 ## Demo
