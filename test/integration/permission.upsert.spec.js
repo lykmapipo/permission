@@ -2,8 +2,7 @@
 
 
 /* dependencies */
-const faker = require('@benmaruchu/faker');
-const { expect } = require('chai');
+const { expect, faker } = require('@lykmapipo/mongoose-test-helpers');
 const { include } = require('@lykmapipo/include');
 const { Permission } = include(__dirname, '..', '..');
 

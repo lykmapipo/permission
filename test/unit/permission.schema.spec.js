@@ -2,9 +2,9 @@
 
 
 /* dependencies */
-const { expect } = require('chai');
+const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { include } = require('@lykmapipo/include');
-const { Schema } = require('mongoose');
+const { SchemaTypes } = require('@lykmapipo/mongoose-common');
 const Permission = include(__dirname, '..', '..', 'lib', 'permission.model');
 
 
@@ -14,7 +14,7 @@ describe('Permission Schema', () => {
     const resource = Permission.path('resource');
 
     expect(resource).to.exist;
-    expect(resource).to.be.instanceof(Schema.Types.String);
+    expect(resource).to.be.instanceof(SchemaTypes.String);
     expect(resource.options).to.exist;
     expect(resource.options).to.be.an('object');
     expect(resource.options.type).to.exist;
@@ -30,7 +30,7 @@ describe('Permission Schema', () => {
     const action = Permission.path('action');
 
     expect(action).to.exist;
-    expect(action).to.be.instanceof(Schema.Types.String);
+    expect(action).to.be.instanceof(SchemaTypes.String);
     expect(action.options).to.exist;
     expect(action.options).to.be.an('object');
     expect(action.options.type).to.exist;
@@ -47,7 +47,7 @@ describe('Permission Schema', () => {
     const description = Permission.path('description');
 
     expect(description).to.exist;
-    expect(description).to.be.instanceof(Schema.Types.String);
+    expect(description).to.be.instanceof(SchemaTypes.String);
     expect(description.options).to.exist;
     expect(description.options).to.be.an('object');
     expect(description.options.type).to.exist;
@@ -61,7 +61,7 @@ describe('Permission Schema', () => {
     const wildcard = Permission.path('wildcard');
 
     expect(wildcard).to.exist;
-    expect(wildcard).to.be.instanceof(Schema.Types.String);
+    expect(wildcard).to.be.instanceof(SchemaTypes.String);
     expect(wildcard.options).to.exist;
     expect(wildcard.options).to.be.an('object');
     expect(wildcard.options.type).to.exist;
