@@ -3,7 +3,7 @@
 
 /* dependencies */
 const _ = require('lodash');
-const { expect } = require('chai');
+const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { include } = require('@lykmapipo/include');
 const { Permission } = include(__dirname, '..', '..');
 
@@ -64,8 +64,8 @@ describe('Permission getById', () => {
     const permission = Permission.fake();
     Permission.getById(permission._id, (error, found) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(found).to.not.exist;
       done();
     });
