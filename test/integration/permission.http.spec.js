@@ -82,7 +82,6 @@ describe('Permission Rest API', function () {
   it('should handle HTTP PATCH on /permissions/id:', done => {
     const { testPatch } = testRouter('permissions', permissionRouter);
     const { description } = permission.fakeOnly('description');
-    console.log(description);
     testPatch(permission._id.toString(), { description })
       .expect(200)
       .expect('Content-Type', /json/)
