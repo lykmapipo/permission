@@ -68,8 +68,8 @@
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
     "@codetanzania/majifix-common": "^0.12.4",
-    "@lykmapipo/express-test-helpers": "^0.8.4",
-    "@lykmapipo/mongoose-test-helpers": "^0.7.13",
+    "@lykmapipo/express-test-helpers": "^0.8.5",
+    "@lykmapipo/mongoose-test-helpers": "^0.7.15",
     "chai": "^4.2.0",
     "grunt": "^1.0.4",
     "grunt-apidoc": "^0.11.0",
@@ -79,23 +79,24 @@
     "handlebars": "^4.1.2",
     "jshint-stylish": "^2.2.1",
     "mocha": "^6.1.4",
-    "mongoose": ">=5.6.0",
+    "mongoose": ">=5.6.4",
+    "shelljs": "^0.8.3",
     "sinon": "^7.3.2"
   },
   "peerDependencies": {
-    "mongoose": ">=5.6.0"
+    "mongoose": ">=5.6.4"
   },
   "dependencies": {
-    "@lykmapipo/common": ">=0.22.0",
-    "@lykmapipo/env": ">=0.9.1",
-    "@lykmapipo/express-common": ">=0.17.8",
-    "@lykmapipo/express-rest-actions": ">=0.6.5",
+    "@lykmapipo/common": ">=0.22.3",
+    "@lykmapipo/env": ">=0.9.5",
+    "@lykmapipo/express-common": ">=0.17.9",
+    "@lykmapipo/express-rest-actions": ">=0.6.6",
     "@lykmapipo/include": ">=0.2.5",
-    "@lykmapipo/mongoose-common": ">=0.25.4",
-    "async": ">=3.0.1",
+    "@lykmapipo/mongoose-common": ">=0.25.8",
+    "async": ">=3.1.0",
     "inflection": ">=1.12.0",
     "lodash": ">=4.17.11",
-    "mongoose-rest-actions": ">=0.28.5"
+    "mongoose-rest-actions": ">=0.28.6"
   },
   "engines": {
     "node": ">=8.11.1",
