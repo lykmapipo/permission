@@ -67,8 +67,8 @@
   },
   "devDependencies": {
     "@benmaruchu/faker": "^4.3.0",
-    "@codetanzania/majifix-common": "^0.15.0",
-    "@lykmapipo/express-test-helpers": "^0.8.5",
+    "@codetanzania/majifix-common": "^0.15.1",
+    "@lykmapipo/express-test-helpers": "^0.8.6",
     "@lykmapipo/mongoose-test-helpers": "^0.7.17",
     "chai": "^4.2.0",
     "grunt": "^1.0.4",
@@ -90,14 +90,14 @@
   "dependencies": {
     "@lykmapipo/common": ">=0.25.1",
     "@lykmapipo/env": ">=0.12.1",
-    "@lykmapipo/express-common": ">=0.17.9",
-    "@lykmapipo/express-rest-actions": ">=0.6.6",
+    "@lykmapipo/express-common": ">=0.17.10",
+    "@lykmapipo/express-rest-actions": ">=0.6.7",
     "@lykmapipo/include": ">=0.2.6",
     "@lykmapipo/mongoose-common": ">=0.25.10",
     "async": ">=3.1.0",
     "inflection": ">=1.12.0",
     "lodash": ">=4.17.15",
-    "mongoose-rest-actions": ">=0.28.7"
+    "mongoose-rest-actions": ">=0.28.8"
   },
   "engines": {
     "node": ">=8.11.1",
