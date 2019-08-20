@@ -1,6 +1,6 @@
 {
   "name": "@lykmapipo/permission",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "A representation of ability to perform an action or access a resource.",
   "main": "index.js",
   "scripts": {
