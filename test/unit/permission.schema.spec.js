@@ -3,9 +3,8 @@
 
 /* dependencies */
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
-const { include } = require('@lykmapipo/include');
 const { SchemaTypes } = require('@lykmapipo/mongoose-common');
-const Permission = include(__dirname, '..', '..', 'lib', 'permission.model');
+const Permission = require('../../lib/permission.model');
 
 
 describe('Permission Schema', () => {

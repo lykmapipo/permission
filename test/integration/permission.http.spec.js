@@ -2,13 +2,12 @@
 
 
 /* dependencies */
-const { include } = require('@lykmapipo/include');
 const {
   clear: clearHttp,
   expect,
   testRouter,
 } = require('@lykmapipo/express-test-helpers');
-const { permissionRouter, Permission } = include(__dirname, '..', '..');
+const { permissionRouter, Permission } = require('../..');
 
 
 describe('Permission Rest API', function () {

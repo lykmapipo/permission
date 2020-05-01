@@ -3,8 +3,7 @@
 
 /* dependencies */
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
-const { include } = require('@lykmapipo/include');
-const { Permission } = include(__dirname, '..', '..');
+const { Permission } = require('../..');
 
 
 describe('Permission Static Delete', () => {

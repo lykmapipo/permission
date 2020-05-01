@@ -4,8 +4,7 @@
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
-const { include } = require('@lykmapipo/include');
-const Permission = include(__dirname, '..', '..', 'lib', 'permission.model');
+const Permission = require('../../lib/permission.model');
 
 
 describe('Permission Instance', () => {

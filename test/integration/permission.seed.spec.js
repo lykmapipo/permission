@@ -5,13 +5,12 @@
 const path = require('path');
 const _ = require('lodash');
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
-const { include } = require('@lykmapipo/include');
-const { Permission } = include(__dirname, '..', '..');
+const { Permission } = require('../..');
 
 
 describe('Permission Seed', () => {
 
-  const SEEDS_PATH = process.env.SEEDS_PATH;
+  const SEED_PATH = process.env.SEED_PATH;
   let permissions = [];
 
   before((done) => {
@@ -19,7 +18,7 @@ describe('Permission Seed', () => {
   });
 
   before(() => {
-    process.env.SEEDS_PATH = path.join(__dirname, '..', 'fixtures');
+    process.env.SEED_PATH = path.join(__dirname, '..', 'fixtures');
   });
 
   it('should be able to seed', (done) => {
@@ -99,7 +98,7 @@ describe('Permission Seed', () => {
   });
 
   after(() => {
-    process.env.SEEDS_PATH = SEEDS_PATH;
+    process.env.SEED_PATH = SEED_PATH;
   });
 
 });

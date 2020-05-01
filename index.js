@@ -21,10 +21,9 @@
 
 /* dependencies */
 const { pkg } = require('@lykmapipo/common');
-const { include } = require('@lykmapipo/include');
 const { apiVersion } = require('@lykmapipo/env');
-const Permission = include(__dirname, 'lib', 'permission.model');
-const permissionRouter = include(__dirname, 'lib', 'permission.http.router');
+const Permission = require('./lib/permission.model');
+const permissionRouter = require('./lib/permission.http.router');
 
 
 /**
