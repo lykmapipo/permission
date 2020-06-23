@@ -1,3 +1,13 @@
+#### 0.8.30 (2020-06-23)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([18f58212](https://github.com/lykmapipo/permission/commit/18f582120c098aaeb34e527cd1580c2a60bce4f8))
+
+##### Documentation Changes
+
+* **changelog:**  generate latest release notes ([59ab23c0](https://github.com/lykmapipo/permission/commit/59ab23c0a3230abb8dc4fa101e42fa17643c401e))
+
 #### 0.8.29 (2020-06-11)
 
 #### 0.8.28 (2020-05-20)
