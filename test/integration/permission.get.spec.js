@@ -1,14 +1,11 @@
 'use strict';
 
-
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { Permission } = require('../..');
 
-
 describe('Permission Get', () => {
-
   before((done) => {
     Permission.deleteMany(done);
   });
@@ -39,8 +36,9 @@ describe('Permission Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(4);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -63,8 +61,9 @@ describe('Permission Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(2);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -87,8 +86,9 @@ describe('Permission Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(1);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -111,8 +111,9 @@ describe('Permission Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(1);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -120,5 +121,4 @@ describe('Permission Get', () => {
   after((done) => {
     Permission.deleteMany(done);
   });
-
 });

@@ -1,14 +1,11 @@
 'use strict';
 
-
 /* dependencies */
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { SchemaTypes } = require('@lykmapipo/mongoose-common');
 const Permission = require('../../lib/permission.model');
 
-
 describe('Permission Schema', () => {
-
   it('should have resource field', () => {
     const resource = Permission.path('resource');
 
@@ -71,5 +68,4 @@ describe('Permission Schema', () => {
     expect(wildcard.options.unique).to.be.true;
     expect(wildcard.options.searchable).to.be.true;
   });
-
 });

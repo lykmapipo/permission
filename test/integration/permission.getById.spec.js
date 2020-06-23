@@ -1,14 +1,11 @@
 'use strict';
 
-
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { Permission } = require('../..');
 
-
 describe('Permission getById', () => {
-
   before((done) => {
     Permission.deleteMany(done);
   });
@@ -34,7 +31,7 @@ describe('Permission getById', () => {
   it('should be able to get with options', (done) => {
     const options = {
       _id: permission._id,
-      select: 'wildcard'
+      select: 'wildcard',
     };
 
     Permission.getById(options, (error, found) => {
@@ -46,17 +43,13 @@ describe('Permission getById', () => {
       //...assert selection
       const fields = _.keys(found.toObject());
       expect(fields).to.have.length(2);
-      _.map([
-        'resource',
-        'description',
-        'createdAt',
-        'updatedAt'
-      ], function (field) {
+      _.map(['resource', 'description', 'createdAt', 'updatedAt'], function (
+        field
+      ) {
         expect(fields).to.not.include(field);
       });
       done(error, found);
     });
-
   });
 
   it('should throw if not exists', (done) => {
@@ -73,5 +66,4 @@ describe('Permission getById', () => {
   after((done) => {
     Permission.deleteMany(done);
   });
-
 });

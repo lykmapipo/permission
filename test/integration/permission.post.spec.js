@@ -1,13 +1,10 @@
 'use strict';
 
-
 /* dependencies */
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { Permission } = require('../..');
 
-
 describe('Permission Static Post', () => {
-
   before((done) => {
     Permission.deleteMany(done);
   });
@@ -27,11 +24,9 @@ describe('Permission Static Post', () => {
   after((done) => {
     Permission.deleteMany(done);
   });
-
 });
 
 describe('Permission Instance Post', () => {
-
   before((done) => {
     Permission.deleteMany(done);
   });
@@ -51,5 +46,4 @@ describe('Permission Instance Post', () => {
   after((done) => {
     Permission.deleteMany(done);
   });
-
 });

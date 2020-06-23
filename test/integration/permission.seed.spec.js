@@ -1,15 +1,12 @@
 'use strict';
 
-
 /* dependencies */
 const path = require('path');
 const _ = require('lodash');
 const { expect } = require('@lykmapipo/mongoose-test-helpers');
 const { Permission } = require('../..');
 
-
 describe('Permission Seed', () => {
-
   const SEED_PATH = process.env.SEED_PATH;
   let permissions = [];
 
@@ -100,5 +97,4 @@ describe('Permission Seed', () => {
   after(() => {
     process.env.SEED_PATH = SEED_PATH;
   });
-
 });

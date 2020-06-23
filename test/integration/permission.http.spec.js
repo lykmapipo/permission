@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const {
   clear: clearHttp,
@@ -9,18 +8,16 @@ const {
 } = require('@lykmapipo/express-test-helpers');
 const { permissionRouter, Permission } = require('../..');
 
-
 describe('Permission Rest API', function () {
-
   let permission;
 
   before(() => clearHttp());
 
-  before(done => {
+  before((done) => {
     Permission.deleteMany(done);
   });
 
-  before(done => {
+  before((done) => {
     permission = Permission.fake();
     permission.post((error, created) => {
       permission = created;
@@ -28,7 +25,7 @@ describe('Permission Rest API', function () {
     });
   });
 
-  it('should handle HTTP POST on /permissions', done => {
+  it('should handle HTTP POST on /permissions', (done) => {
     const { testPost } = testRouter('permissions', permissionRouter);
     testPost(permission.toObject())
       .expect(404)
@@ -37,7 +34,7 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP GET on /permissions', done => {
+  it('should handle HTTP GET on /permissions', (done) => {
     const { testGet } = testRouter('permissions', permissionRouter);
     testGet()
       .expect(200)
@@ -59,7 +56,7 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP GET on /permissions/id:', done => {
+  it('should handle HTTP GET on /permissions/id:', (done) => {
     const { testGet } = testRouter('permissions', permissionRouter);
     testGet(permission._id.toString())
       .expect(200)
@@ -78,7 +75,7 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP PATCH on /permissions/id:', done => {
+  it('should handle HTTP PATCH on /permissions/id:', (done) => {
     const { testPatch } = testRouter('permissions', permissionRouter);
     const { description } = permission.fakeOnly('description');
     testPatch(permission._id.toString(), { description })
@@ -101,7 +98,7 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP PUT on /permissions/id:', done => {
+  it('should handle HTTP PUT on /permissions/id:', (done) => {
     const { testPut } = testRouter('permissions', permissionRouter);
     const { description } = permission.fakeOnly('description');
     testPut(permission._id.toString(), { description })
@@ -124,7 +121,7 @@ describe('Permission Rest API', function () {
       });
   });
 
-  it('should handle HTTP DELETE on /permissions/id:', done => {
+  it('should handle HTTP DELETE on /permissions/id:', (done) => {
     const { testDelete } = testRouter('permissions', permissionRouter);
     testDelete(permission._id.toString())
       .expect(405)
@@ -133,8 +130,7 @@ describe('Permission Rest API', function () {
       });
   });
 
-  after(done => {
+  after((done) => {
     Permission.deleteMany(done);
   });
-
 });
